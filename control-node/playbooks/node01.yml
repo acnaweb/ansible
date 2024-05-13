@@ -1,5 +1,5 @@
 ---
-- name: Configurar servidor de banco de dados
+- name: Configurar servidor 
   hosts: node01
   remote_user: vagrant  
   vars_files:
