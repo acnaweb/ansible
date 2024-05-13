@@ -1,0 +1,54 @@
+---
+- name: Configurar servidor 
+  hosts: node02
+  remote_user: vagrant  
+
+  vars:
+    dbname: db01
+    dbusername: root
+    dbpassword: mypassword
+
+  become: yes      
+  roles:
+    - ubuntu-setup
+
+  tasks:
+    - name: Configurar hosts 
+      become: yes
+      ansible.builtin.lineinfile: 
+        path: /etc/hosts
+        create: yes
+        line: "{{item}}"
+      with_lines:
+        - cat "/vagrant/playbooks/hosts.txt"     
+
+    - name: Criar usuario "app"
+      user:
+        name: app
+        comment: Usuario da aplicacao
+        uid: 5000
+
+    - name: Install the package "Maven"
+      apt:
+        name: maven
+        state: latest     
+
+    - name: Install the package "Java 17"
+      apt:
+        name: openjdk-17-jdk
+        state: latest
+
+    - name: Criar diretorios da applicacao
+      file:
+        path: /opt/app
+        state: directory
+        owner: app
+        group: app
+
+    # - name: Clone
+    #   # become_user: app
+    #   git:
+    #     repo: https://github.com/acnaweb/mvc-rh.git
+    #     dest: /opt/app/src       
+    #     single_branch: yes
+    #     force: true
