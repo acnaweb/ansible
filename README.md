@@ -9,16 +9,10 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an
 
 ## Commands
 
-- add hosts and groups
+### Control-node
+
+- Add hosts and groups
 > /etc/ansible/hosts
-
-```sh
-[apps]
-app01
-
-[dbs]
-db01
-```
 
 ```sh
 ansible -m ping all
