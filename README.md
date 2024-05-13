@@ -19,9 +19,9 @@ ansible -m ping all
 ```
 
 ```sh
+ansible-playbook db.yml
 ansible-galaxy install geerlingguy.mysql
 
-ansible-playbook playbook.yaml
 ```
 
 
@@ -107,3 +107,4 @@ sudo systemctl status sonar
 ## References 
 
 - https://www.ansible.com/
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html

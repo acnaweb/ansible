@@ -1,0 +1,13 @@
+- name: Upgrade dos pacotes do SO
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest    
+
+- name: Install the package "git"
+  ansible.builtin.apt:
+    name: git
+    state: latest

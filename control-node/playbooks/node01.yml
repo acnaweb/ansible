@@ -1,0 +1,24 @@
+---
+- name: Configurar servidor de banco de dados
+  hosts: node01
+  remote_user: vagrant  
+  vars_files:
+    - vars/main.yml
+
+  vars:
+    dbname: db01
+    dbusername: root
+    dbpassword: mypassword
+
+  tasks:
+    - name: Configurar hosts 
+      become: yes
+      ansible.builtin.lineinfile: 
+        path: /etc/hosts
+        create: yes
+        line: 192.168.56.10 control-node
+
+        # with_lines: cat "/vagrant/playbooks/hosts.txt"        
+  roles:
+    - configuracao-default-so
+
