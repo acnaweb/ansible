@@ -36,3 +36,4 @@ ansible-galaxy install galazy.pkg
 - https://www.ansible.com/
 - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
 - https://www.cherryservers.com/blog/ansible-roles-tutorial
+- https://blog.isweluiz.com.br/2022/10/more-complex-loops.html

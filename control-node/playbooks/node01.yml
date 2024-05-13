@@ -16,9 +16,10 @@
       ansible.builtin.lineinfile: 
         path: /etc/hosts
         create: yes
-        line: 192.168.56.10 control-node
-
-        # with_lines: cat "/vagrant/playbooks/hosts.txt"        
+        # line: "{{item.key}} {{item.value}}"
+        line: "{{item}}"
+      with_lines:
+        - cat "/vagrant/playbooks/hosts.txt"        
 
   become: yes      
   roles:
